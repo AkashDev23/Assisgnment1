@@ -1,0 +1,85 @@
+<html>
+<head>
+  <title>Q7</title>
+  <style>
+    #overlay {
+		/* if display is not none then we will see grey screen as soon as website loads */
+		display: none;
+        position: absolute;
+		/* top and bottom is the distance of grey screen from the top of page */
+        top: 0;
+        bottom: 0;
+		/* grey background at side of the splash screen */
+        background: #999;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+        z-index: 100;
+    }
+
+    #popup {
+		/* if display is not none then the content of splash screen will show as soon as page load */
+		display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: #fff;
+        width: 500px;
+        height: 500px;
+        margin-left: -250px; /*Half the value of width to center div*/
+        margin-top: -250px; /*Half the value of height to center div*/
+        z-index: 200;
+    }
+
+    #popupclose {
+        float: right;
+        padding: 10px;
+        cursor: pointer;
+    }
+	.popupcontent {
+		padding: 10px;
+	}
+
+	#button {
+		cursor: pointer;
+	}
+  </style>
+</head>
+<body>
+<div id="maincontent">
+    <h1>My website<h2>
+		<!-- clicking on this button will show the splash screen -->
+		<button id="button">Show splash screen</button>
+</div>
+<!-- This will cover the page content when splash is displayed -->
+<div id="overlay"></div>
+<!-- this will contain everthing in splash screen -->
+<div id="popup">
+	<!-- This will contain x button to close -->
+	<div class="popupcontrols">
+        <span id="popupclose">X</span>
+    </div>
+	<!-- this will contain the things that will be displayed in the splash screen -->
+    <div class="popupcontent">
+        <h1>this is my splash screen</h1>
+    </div>
+</div>
+<script type="text/javascript">
+	// Initialize Variables
+	var closePopup = document.getElementById("popupclose");
+	var overlay = document.getElementById("overlay");
+	var popup = document.getElementById("popup");
+	var button = document.getElementById("button");
+	// Close Popup Event
+	closePopup.onclick = function() {
+	  overlay.style.display = 'none';
+	  popup.style.display = 'none';
+	};
+	// Show Overlay and Popup
+	button.onclick = function() {
+	  overlay.style.display = 'block';
+	  popup.style.display = 'block';
+	}
+</script>
+</body>
+</html>
